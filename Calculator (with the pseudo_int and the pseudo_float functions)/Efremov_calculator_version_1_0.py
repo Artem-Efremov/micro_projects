@@ -1,7 +1,24 @@
+"""
+Description:
+    The script is based on work of three loops.
+    
+    The first two is same and take a number from the standard input as a string 
+    (the loop repeats if the number isn`t valid).
+
+    VALID STRING NUMBERS: The numbers that consist only from digits. Any symbols 
+    like punctuations, whitespaces or letters are not valid and break the loop.
+    
+    Third loop takes a symbol from the standard input as a string (the loop 
+    repeats if the symbol of operator isn`t valid).
+    
+    VALID OPERATORS: + -  * ** / // %
+"""
+
+
 while True:
     str_first_num = input('Enter the first integer number: ') # Get the first number
     
-    is_digit = True
+    is_digit = True 
     first_num = 0
     ind = 0
     
@@ -31,6 +48,7 @@ while True:
     second_num = 0
     ind = 0
     
+    # Convert the first number from string type to integer type without function int
     while ind < len(str_second_num):
         digit = str_second_num[::-1][ind]
         if ord('0') <= ord(digit) <= ord('9'):

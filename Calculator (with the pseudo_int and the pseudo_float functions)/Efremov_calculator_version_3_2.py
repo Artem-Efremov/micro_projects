@@ -1,21 +1,7 @@
 """
 
-Changes in version 3.0:
-- Added the support of float numbers
-- Added the support of unary operators
-- Added zero-filling for numbers, that start with dot (e.g. '.0544')
-- Added the cycle for repeating of the program
-
-Changes in version 3.1:
-- All cycles were replaced by the recursive functions
-- The program will start data processing when the script is opened as 
-    self-dependent file. It allows to import functions from the script.
-- Added the variable '__all__'
-- The principle of the function "pseudo_int" is based on the recursion.
-
 Changes in version 3.2:
 - The functions from module operator were replaced by the lambda-functions.
-
 
 """
 
@@ -60,7 +46,7 @@ def pseudo_float(string_num):
     """ Convert the number from string to float 
         type without built-in function float """
 
-    sign = {'+': 1, '-': -1}.get(string_num[0], 1)                  # Get unary operation
+    sign = {'+': 1, '-': -1}.get(string_num[0], 1) # Get unary operation
 
     if string_num[0] in '+-':
         string_num = string_num[1:]

@@ -1,10 +1,10 @@
 """
 
-Changes in version 3.0:
-- Added the support of float numbers
-- Added the support of unary operators
-- Added zero-filling for numbers, that start with dot (e.g. '.0544')
-- Added the cycle for repeating of the program
+    Changes in version 3.0:
+      - Added the support of float numbers.
+      - Added the support of unary operators ('+' and '-').
+      - Added zero-filling for numbers, that start with dot (e.g. '.0544').
+      - Added the cycle for repeating of the program.
 
 """
 

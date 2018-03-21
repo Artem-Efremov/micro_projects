@@ -1,8 +1,22 @@
+"""
+
+    Changes in version 2.0:
+      - Added the 'pseudo_int' function that convert the string number to int. 
+        This function is based on the built-in 'ord' function.
+      - Added an import of the 'operator' module.
+      - Added the dictionary with the main arithmetic operators from the 
+        'operator' module. The keys of the dict are the valid operators.
+
+"""
+
+
+
 import operator
 
 
 def pseudo_int(string_num):
-    """ Convert the number from string type to integer type without built function int """
+    """ Convert the number from string type to 
+        integer type without built function int """
     int_num = 0
     reverse_string_num = string_num[::-1] # begin read the characters from the end of the string.
     for indexx in range(len(string_num)):

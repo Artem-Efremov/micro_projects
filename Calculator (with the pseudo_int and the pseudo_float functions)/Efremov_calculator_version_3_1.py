@@ -1,18 +1,11 @@
 """
 
-Changes in version 3.0:
-- Added the support of float numbers
-- Added the support of unary operators
-- Added zero-filling for numbers, that start with dot (e.g. '.0544')
-- Added the cycle for repeating of the program
-
-Changes in version 3.1:
-- All cycles ware replaced by the recursive functions
-- The program will start data processing when the script is opened as 
-    self-dependent file. It allows to import functions from the script.
-- Added the variable '__all__'
-- The principle of the function "pseudo_int" is based on the recursion.
-
+    Changes in version 3.1:
+      - All cycles ware replaced by the recursive functions.
+      - The program will start data processing when the script is opened as 
+        self-dependent file. It allows to import functions from the script.
+      - Added the variable '__all__'.
+      - The principle of the function "pseudo_int" is based on the recursion.
 
 """
 
