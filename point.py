@@ -5,24 +5,32 @@ class Point2D:
 
     """ A point identified by (x, y) coordinates.
 
-    Initialization:
+    Initialization
+    ==============
+    
         Without arguments - create Point2D(0, 0)
         With one argument (only instance of the Point2D) -
             create copy of this instance
         With two arguments (two int or float numbers) -
             create Point2D(x, y)
 
-    Attributes:
+    Attributes
+    ==========
+    
         x - the x-coordinate
         y - the y-coordinate
 
-    Supports:
+    Supports
+    ========
+    
         Binary operations: +, -, *, **, /, //, %
         Comparison operations: ==, !=
         Unary operations: ~ (inversion), unary -, abs()
         Representation: str()
 
-    Methods:
+    Methods
+    =======
+    
         coord_items - returns [('x', x), ('y', y)]
         coord_to_list - returns [x, y]
         copy - returns copy of the point
@@ -45,7 +53,9 @@ class Point2D:
         rotate_around_point - rotate point around other point
             by angle in degrees
         slope - slope of the segment (by two points)
-        slope_from_origin - slope of the segment (one of points is origin)"""
+        slope_from_origin - slope of the segment (one of points is origin)
+        quadrant - return one of four regions that formed by dividing
+            the plane by two axes (returns 0 if point is origin)"""
 
     def __init__(self, *args):
         q_args = len(args)
@@ -161,6 +171,20 @@ class Point2D:
         self.x += dx
         self.y += dy
 
+    def quadrant(self):
+        if self.x > 0:
+            if self.y > 0:
+                return 1
+            elif self.y < 0:
+                return 4
+        elif self.x < 0:
+            if self.y > 0:
+                return 2
+            elif self.y < 0:
+                return 3
+        else:
+            return 0
+
     def point_reflection(self, other):
         Point2D.check_obj_type('point_reflection', other, ('Point2D'))
         x = 2 * other.x - self.x
@@ -263,6 +287,12 @@ if __name__ == '__main__':
     # Attributes
     print(A.x)          # 1
     print(B.y)          # 6
+
+    # Quadrants
+    print(A.quadrant())                     # 1
+    print(B.quadrant())                     # 2
+    print(Point2D(-3, -8).quadrant())       # 3
+    print(Point2D(6, -5).quadrant())        # 4
 
     # Coordinates
     print(A.coord_items())                  # [('x', 1), ('y', 2)]
