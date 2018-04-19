@@ -23,15 +23,15 @@ class Point2D:
         Representation: str()
 
     Methods:
-        coord_items - [('x', 5), ('y', 1)]
-        coord_to_list - [x, y]
-        copy - copy of the point
+        coord_items - returns [('x', x), ('y', y)]
+        coord_to_list - returns [x, y]
+        copy - returns copy of the point
         delta_x - difference between the x-coordinates of two points
         delta_y - difference between the y-coordinates of two points
         distance - distance between two points
         integerize - if x == 1.0 then x = 1, if x == 1.2 then x = 1.2
-        line_equation - two coefficients (k, b) of the equation 'y = kx + b'
-            of the straight line joining the two points
+        line_equation - returns tuple of two coefficients (k, b) of the 
+            equation 'y = kx + b' of the straight line joining the two points
         midpoint - point that divides the segment in half
         move - x + dx, y + dy (inplace method)
         origin_reflection - reflect point about the origin
@@ -45,8 +45,7 @@ class Point2D:
         rotate_around_point - rotate point around other point
             by angle in degrees
         slope - slope of the segment (by two points)
-        slope_from_origin - slope of the segment (one of points is origin)
-        """
+        slope_from_origin - slope of the segment (one of points is origin)"""
 
     def __init__(self, *args):
         q_args = len(args)
