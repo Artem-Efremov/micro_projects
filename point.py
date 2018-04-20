@@ -7,7 +7,7 @@ class Point2D:
 
     Initialization
     ==============
-    
+
         Without arguments - create Point2D(0, 0)
         With one argument (only instance of the Point2D) -
             create copy of this instance
@@ -16,13 +16,13 @@ class Point2D:
 
     Attributes
     ==========
-    
+
         x - the x-coordinate
         y - the y-coordinate
 
     Supports
     ========
-    
+
         Binary operations: +, -, *, **, /, //, %
         Comparison operations: ==, !=
         Unary operations: ~ (inversion), unary -, abs()
@@ -30,7 +30,7 @@ class Point2D:
 
     Methods
     =======
-    
+
         coord_items - returns [('x', x), ('y', y)]
         coord_to_list - returns [x, y]
         copy - returns copy of the point
@@ -38,7 +38,7 @@ class Point2D:
         delta_y - difference between the y-coordinates of two points
         distance - distance between two points
         integerize - if x == 1.0 then x = 1, if x == 1.2 then x = 1.2
-        line_equation - returns tuple of two coefficients (k, b) of the 
+        line_equation - returns tuple of two coefficients (k, b) of the
             equation 'y = kx + b' of the straight line joining the two points
         midpoint - point that divides the segment in half
         move - x + dx, y + dy (inplace method)
@@ -55,7 +55,7 @@ class Point2D:
         slope - slope of the segment (by two points)
         slope_from_origin - slope of the segment (one of points is origin)
         quadrant - return one of four numbers of regions that formed
-            by dividing the plane by two axes (returns 0 if point lies 
+            by dividing the plane by two axes (returns 0 if point lies
             on the axis or on the origin)"""
 
     def __init__(self, *args):
@@ -271,7 +271,7 @@ if __name__ == '__main__':
     C = Point2D()
     D = Point2D(1, 12)
 
-    # # Clone points
+    # Clone points
     E = Point2D(A)
     print(E == A)       # True
     print(E is A)       # False
