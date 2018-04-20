@@ -54,8 +54,9 @@ class Point2D:
             by angle in degrees
         slope - slope of the segment (by two points)
         slope_from_origin - slope of the segment (one of points is origin)
-        quadrant - return one of four regions that formed by dividing
-            the plane by two axes (returns 0 if point is origin)"""
+        quadrant - return one of four numbers of regions that formed
+            by dividing the plane by two axes (returns 0 if point lies 
+            on the axis or on the origin)"""
 
     def __init__(self, *args):
         q_args = len(args)
@@ -172,16 +173,14 @@ class Point2D:
         self.y += dy
 
     def quadrant(self):
-        if self.x > 0:
-            if self.y > 0:
-                return 1
-            elif self.y < 0:
-                return 4
-        elif self.x < 0:
-            if self.y > 0:
-                return 2
-            elif self.y < 0:
+        if self.x > 0 and self.y > 0:
+            return 1
+        elif self.x < 0 and self.y > 0:
+            return 2
+        elif self.x < 0 and self.y < 0:
                 return 3
+        elif self.x > 0 and self.y < 0:
+            return 4
         else:
             return 0
 
