@@ -14,19 +14,20 @@ class Point2D:
         With two arguments (two int or float numbers) -
             create Point2D(x, y)
 
-    Attributes
+    Properties
     ==========
 
         x - the x-coordinate
         y - the y-coordinate
+        is_origin - returns True if self == Point2D(0, 0)
 
     Supports
     ========
 
         Binary operations: +, -, *, **, /, //, %
         Comparison operations: ==, !=
-        Unary operations: ~ (inversion), unary -, abs()
-        Representation: str()
+        Unary operations: ~ (inversion), unary -, unary +
+        Built functions: abs(), round(), str()
 
     Methods
     =======
@@ -82,6 +83,10 @@ class Point2D:
         obj_type = type(obj).__name__
         if obj_type not in types:
             raise TypeError(err_msg.format(op, obj_type))
+
+    @property
+    def is_origin(self):
+        return self == Point2D()
 
     def __str__(self):
         return 'Point2D({}, {})'.format(self.x, self.y)
@@ -144,10 +149,16 @@ class Point2D:
         y = -abs(self.y)
         return Point2D(x, y)
 
+    def __pos__(self):
+        return self
+
     def __invert__(self):
         x = self.x * -1
         y = self.y * -1
         return Point2D(x, y)
+
+    def __round__(self, n=0):
+        return Point2D(round(self.x, n), round(self.y, n))
 
     def __eq__(self, other):
         Point2D.check_obj_type('==', other, ('Point2D'))
@@ -199,13 +210,14 @@ class Point2D:
     def reflect_y(self):
         return Point2D(-self.x, self.y).integerize()
 
-    def rotate_around_point(self, other, degr):
-        return (self - other).rotate_around_origin(degr) + other
+    def rotate_around_point(self, other, theta, radians=False):
+        return (self - other).rotate_around_origin(theta, radians) + other
 
-    def rotate_around_origin(self, degr):
-        rad = math.radians(degr)
-        sinus = math.sin(rad)
-        cosinus = math.cos(rad)
+    def rotate_around_origin(self, theta, radian=False):
+        if not radian:
+            theta = math.radians(theta)
+        sinus = math.sin(theta)
+        cosinus = math.cos(theta)
         new_x = round(self.x * cosinus - self.y * sinus, 10)
         new_y = round(self.x * sinus + self.y * cosinus, 10)
         return Point2D(new_x, new_y).integerize()
@@ -265,6 +277,7 @@ class Point2D:
 
 
 if __name__ == '__main__':
+
     # Create points
     A = Point2D(1, 2)
     B = Point2D(-3, 6)
@@ -283,9 +296,11 @@ if __name__ == '__main__':
     print(A)            # Point2D(1, 2)
     print(C)            # Point2D(0, 0)
 
-    # Attributes
+    # Properties
     print(A.x)          # 1
     print(B.y)          # 6
+    print(A.is_origin)  # False
+    print(C.is_origin)  # True
 
     # Quadrants
     print(A.quadrant())                     # 1
@@ -307,7 +322,6 @@ if __name__ == '__main__':
     print(A ** 3)       # Point2D(1, 8)
     print(pow(A, 5))    # Point2D(1, 32)
     print(A / 5)        # Point2D(0.2, 0.4)
-    print(B // 2)       # Point2D(-2, 3)
     print(B % 3)        # Point2D(0, 0)
 
     # Comparisons
@@ -316,10 +330,14 @@ if __name__ == '__main__':
     print(A != E)       # False
     print(A != B)       # True
 
-    # Unary operations
+    # Transform the attributes
     print(abs(B))       # Point2D(3, 6)
     print(-A)           # Point2D(-1, -2)
+    print(+A)           # Point2D(1, 2)
     print(~B)           # Point2D(3, -6)
+    Z = Point2D(1.5656, 5.65589)
+    print(round(Z, 2))  # Point2D(1.57, 5.66)
+    print(round(Z))     # Point2D(2.0, 6.0)
 
     # Reflection
     print(B.origin_reflection())            # Point2D(3, -6)
