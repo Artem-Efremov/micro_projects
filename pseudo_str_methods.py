@@ -60,14 +60,14 @@ def isdigit_(string):
 
 def isspace_(string):
     for i in string:
-        if ord(i) not in MAIN_PUNCTUATION:
+        if ord(i) not in SPACES:
             return False
     return True
 
 # My own function
 def is_punctuation(string):
     for i in string:
-        if ord(i) not in SPACES:
+        if ord(i) not in MAIN_PUNCTUATION:
             return False
     return True
 
